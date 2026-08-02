@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación - Mis 15 años Dayra Guerrero Zambrano</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=EB+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: auto;
+            min-height: 100vh;
+        }
+
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* PORTADA - SOBRE */
+        .envelope-container {
+            width: 100%;
+            max-width: 500px;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .envelope {
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+            border: 3px solid #d4a574;
+            border-radius: 8px;
+            padding: 60px 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: visible;
+        }
+
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(135deg, #d4a574 0%, #c89468 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 60%, 50% 100%, 0 60%);
+            transition: all 0.4s ease;
+            z-index: 1;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .envelope:hover::before {
+            height: 0;
+        }
+
+        .envelope-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .envelope-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            transition: transform 0.4s ease;
+            display: inline-block;
+        }
+
+        .envelope:hover .envelope-icon {
+            transform: scale(1.15);
+        }
+
+        .envelope-text {
+            color: #8D2904;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .envelope-subtitle {
+            color: #555;
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .envelope:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+        }
+
+        /* INVITACIÓN */
+        .invitation-wrapper {
+            display: none;
+            width: 100%;
+            min-height: 100vh;
+            padding: 40px 20px;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .invitation-wrapper.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .invitation-container {
+            width: 100%;
+            max-width: 550px;
+            margin: 0 auto;
+            animation: slideIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .invitation {
+            background:
+linear-gradient(rgba(255,255,255,.82),rgba(255,255,255,.82)),
+url('assets/quinceañera1.jpg') center/cover no-repeat;
+            border: 6px solid #d4a574;
+            border-radius: 30px;
+            padding: 50px 35px;
+            position: relative;
+            box-shadow: 0 25px 70px rgba(212, 165, 116, 0.35);
+            overflow: visible;
+        }
+
+        .invitation::before,
+        .invitation::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .invitation::before {
+            top: -20px;
+            right: -20px;
+        }
+
+        .invitation::after {
+            bottom: -20px;
+            left: -20px;
+        }
+
+        .invitation-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .joy-opening {
+            font-family: 'Cinzel', serif;
+            color: #8D2904;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .parents-block {
+            margin-bottom: 30px;
+        }
+
+        .parents-names {
+            font-family: 'EB Garamond', serif;
+            color: #323E48;
+            font-size: 20px;
+            line-height: 2;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .parents-divider {
+            font-family: 'Cinzel', serif;
+            color: #8D2904;
+            font-weight: 400;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .invitation-text {
+            font-family: 'EB Garamond', serif;
+            color: #323E48;
+            font-size: 16px;
+            line-height: 1.9;
+            margin: 25px 0;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+        }
+
+        .daughter-highlight {
+            font-family: 'Cinzel', serif;
+            color: #8D2904;
+            font-size: 32px;
+            font-weight: 700;
+            margin: 25px 0;
+            letter-spacing: 0.5px;
+        }
+
+        .special-moment {
+            font-family: 'EB Garamond', serif;
+            color: #323E48;
+            font-size: 15px;
+            line-height: 1.9;
+            margin: 25px 0;
+            font-weight: 400;
+            font-style: italic;
+            letter-spacing: 0.2px;
+        }
+
+        .privilege-text {
+            font-family: 'EB Garamond', serif;
+            color: #323E48;
+            font-size: 15px;
+            line-height: 1.9;
+            margin: 25px 0;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+        }
+
+        .illustration-container{
+width:100%;
+margin:40px 0;
+display:flex;
+justify-content:center;
+align-items:center;
+background:none;
+border:none;
+}
+
+        .illustration-container img{
+width:270px;
+max-width:90%;
+height:auto;
+object-fit:contain;
+padding:12px;
+border:3px solid #d4a574;
+border-radius:28px;
+background:rgba(255,255,255,.70);
+box-shadow:0 10px 30px rgba(212,165,116,.25),0 0 0 8px rgba(255,255,255,.55);
+}
+
+        .event-details {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 18px;
+            padding: 30px;
+            margin: 35px 0;
+            border: 2px solid #f0d7d0;
+        }
+
+        .event-item {
+            margin-bottom: 20px;
+        }
+
+        .event-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .event-label {
+            font-family: 'Cinzel', serif;
+            color: #8D2904;
+            font-size: 11px;
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .event-value {
+            font-family: 'EB Garamond', serif;
+            color: #323E48;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+        }
+
+        .divider-line {
+            width: 80px;
+            height: 2px;
+            background: #d4a574;
+            margin: 20px auto;
+        }
+
+        .gratitude-text {
+            font-family: 'EB Garamond', serif;
+            color: #323E48;
+            font-size: 15px;
+            line-height: 1.9;
+            margin: 30px 0;
+            font-weight: 400;
+            font-style: italic;
+            letter-spacing: 0.2px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 40px;
+            flex-direction: column;
+        }
+
+        .btn {
+            padding: 14px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-family: 'Barlow', sans-serif;
+        }
+
+        .btn-maps {
+            background: #8D2904;
+            color: white;
+        }
+
+        .btn-maps:hover {
+            background: #6b1f03;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(141, 41, 4, 0.3);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background: #1fa851;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-back {
+            background: #E8E8E8;
+            color: #323E48;
+            font-size: 13px;
+            margin-top: 15px;
+        }
+
+        .btn-back:hover {
+            background: #D0D0D0;
+            transform: translateY(-2px);
+        }
+
+        .icon {
+            font-size: 18px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .invitation {
+                padding: 35px 25px;
+                border-width: 5px;
+            }
+
+            .envelope {
+                padding: 40px 25px;
+            }
+
+            .joy-opening {
+                font-size: 20px;
+            }
+
+            .parents-names {
+                font-size: 14px;
+                line-height: 1.8;
+            }
+
+            .daughter-highlight {
+                font-size: 20px;
+            }
+
+            .invitation-text,
+            .special-moment,
+            .privilege-text,
+            .gratitude-text {
+                font-size: 13px;
+                line-height: 1.7;
+            }
+
+            .event-value {
+                font-size: 15px;
+            }
+
+            .illustration-container{
+width:100%;
+margin:40px 0;
+display:flex;
+justify-content:center;
+align-items:center;
+background:none;
+border:none;
+}
+
+            .invitation-wrapper {
+                padding: 30px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- PORTADA - SOBRE DE INVITACIÓN -->
+    <div class="envelope-container" id="envelopeContainer">
+        <div class="envelope" onclick="openInvitation()">
+            <div class="envelope-content">
+                <div class="envelope-icon">✉️</div>
+                <div class="envelope-text">Tienes una invitación especial</div>
+                <div class="envelope-subtitle">Haz clic para abrir</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INVITACIÓN COMPLETA -->
+    <div class="invitation-wrapper" id="invitationWrapper">
+        <div class="invitation-container">
+            <div class="invitation">
+                <div class="invitation-content">
+                    
+                    <!-- Apertura elegante -->
+                    <div class="joy-opening">Con inmensa alegría</div>
+
+                    <!-- Nombres de padres -->
+                    <div class="parents-block">
+                        <div class="parents-names">
+                            Carlos Daniel Guerrero Conrado
+                        </div>
+                        <div class="parents-divider">y</div>
+                        <div class="parents-names">
+                            Lissette Mónica Zambrano Cercado
+                        </div>
+                    </div>
+
+                    <!-- Párrafo de invitación principal -->
+                    <div class="invitation-text">
+                        tienen el honor de invitarles a compartir una noche inolvidable con motivo de la celebración de los XV años de su querida hija
+                    </div>
+
+                    <!-- Nombre de la hija -->
+                    <div class="daughter-highlight">
+                        Dayra Guerrero Zambrano
+                    </div>
+
+                    <!-- Ilustración -->
+                    <div class="illustration-container">
+                        <img src="assets/quinceañera2.png" alt="Dayra Guerrero Zambrano" onerror="this.style.display='none'">
+                    </div>
+
+                    <!-- Párrafo especial sobre el momento -->
+                    <div class="special-moment">
+                        Con gran ilusión celebramos este momento tan especial, símbolo de nuevos sueños, esperanza y del inicio de una hermosa etapa en su vida.
+                    </div>
+
+                    <!-- Párrafo sobre la presencia -->
+                    <div class="privilege-text">
+                        Será un verdadero privilegio contar con su distinguida presencia y compartir juntos una velada que permanecerá para siempre en nuestros recuerdos.
+                    </div>
+
+                    <!-- Detalles del evento -->
+                    <div class="event-details">
+                        <div class="event-item">
+                            <div class="event-label">Fecha</div>
+                            <div class="event-value">Sábado, 5 de septiembre</div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-label">Hora</div>
+                            <div class="event-value">8:00 p. m.</div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-label">Lugar</div>
+                            <div class="event-value">Esmeraldas y Vacas Galindo</div>
+                        </div>
+                    </div>
+
+                    <!-- Línea decorativa -->
+                    <div class="divider-line"></div>
+
+                    <!-- Párrafo de gratitud -->
+                    <div class="gratitude-text">
+                        Agradecemos de corazón su compañía en esta ocasión tan significativa para nuestra familia.
+                    </div>
+
+                    <!-- Botones de acción -->
+                    <div class="action-buttons">
+                        <a href="https://maps.app.goo.gl/zDQQNUM27RSpZbW57" target="_blank" class="btn btn-maps">
+                            <span class="icon">📍</span> Ver ubicación en Google Maps
+                        </a>
+                        <a href="https://wa.me/593970190446?text=Hola,%20confirmo%20mi%20asistencia%20a%20los%20XV%20años%20de%20Dayra%20Guerrero%20Zambrano." target="_blank" class="btn btn-whatsapp">
+                            <span class="icon">💬</span> Confirmar Asistencia por WhatsApp
+                        </a>
+                        <!--<button onclick="closeInvitation()" class="btn btn-back">
+                            ← Volver al sobre
+                        </button>-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openInvitation() {
+            const envelope = document.getElementById('envelopeContainer');
+            const invitation = document.getElementById('invitationWrapper');
+            
+            envelope.style.display = 'none';
+            invitation.classList.add('active');
+            
+            // Scroll al inicio de la invitación
+            window.scrollTo(0, 0);
+        }
+
+        function closeInvitation() {
+            const envelope = document.getElementById('envelopeContainer');
+            const invitation = document.getElementById('invitationWrapper');
+            
+            invitation.classList.remove('active');
+            setTimeout(() => {
+                envelope.style.display = 'flex';
+                invitation.style.display = 'none';
+                window.scrollTo(0, 0);
+            }, 300);
+        }
+    </script>
+</body>
+</html>
