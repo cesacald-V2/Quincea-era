@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitación - Mis 15 años Dayra Guerrero Zambrano</title>
+    <title>Mis 15 años - Dayra Guerrero Zambrano</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=EB+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FUENTES COMBINADAS: Great Vibes (Manuscrita) + Cinzel (Formal legible) -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -15,6 +16,41 @@
             box-sizing: border-box;
         }
 
+        /* ANIMACIONES */
+        @keyframes revealFadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes floatButterfly {
+            0% { transform: translateY(0px) rotate(0deg) scale(1); }
+            50% { transform: translateY(-10px) rotate(5deg) scale(1.1); }
+            100% { transform: translateY(0px) rotate(0deg) scale(1); }
+        }
+
+        @keyframes shimmer {
+            0%, 100% { text-shadow: 0 0 10px rgba(212, 165, 116, 0.4); }
+            50% { text-shadow: 0 0 25px rgba(212, 165, 116, 0.9); }
+        }
+
+        @keyframes cardGlow {
+            0% { border-color: rgba(212, 165, 116, 0.45); box-shadow: 0 0 0 rgba(212, 165, 116, 0); }
+            100% { border-color: #d4a574; box-shadow: 0 0 25px rgba(212, 165, 116, 0.4); }
+        }
+
+        .scroll-reveal { opacity: 0; }
+        .scroll-reveal.revealed { animation: revealFadeUp 0.6s ease forwards; }
+        .scroll-reveal.revealed[data-delay="0.1s"] { animation-delay: 0.1s; }
+        .scroll-reveal.revealed[data-delay="0.2s"] { animation-delay: 0.2s; }
+        .scroll-reveal.revealed[data-delay="0.3s"] { animation-delay: 0.3s; }
+        .scroll-reveal.revealed[data-delay="0.4s"] { animation-delay: 0.4s; }
+        .scroll-reveal.revealed[data-delay="0.5s"] { animation-delay: 0.5s; }
+        .scroll-reveal.revealed[data-delay="0.6s"] { animation-delay: 0.6s; }
+        .scroll-reveal.revealed[data-delay="0.7s"] { animation-delay: 0.7s; }
+        .scroll-reveal.revealed[data-delay="0.8s"] { animation-delay: 0.8s; }
+        .scroll-reveal.revealed[data-delay="0.9s"] { animation-delay: 0.9s; }
+        .scroll-reveal.revealed[data-delay="1s"] { animation-delay: 1s; }
+
         html, body {
             width: 100%;
             height: auto;
@@ -22,8 +58,9 @@
         }
 
         body {
-            font-family: 'Barlow', sans-serif;
-            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+            /* Fuente base manuscrita */
+            font-family: 'Great Vibes', cursive;
+            background: #0d0d0d; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -42,14 +79,14 @@
         }
 
         .envelope {
-            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
-            border: 3px solid #d4a574;
+            background: linear-gradient(135deg, #1f1f1f 0%, #2a2a2a 100%);
+            border: 4px solid #d4a574;
             border-radius: 8px;
             padding: 60px 40px;
             text-align: center;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 60px rgba(212, 165, 116, 0.3), 0 0 40px rgba(139, 0, 0, 0.2);
             position: relative;
             overflow: visible;
         }
@@ -57,80 +94,51 @@
         .envelope::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            height: 50%;
-            background: linear-gradient(135deg, #d4a574 0%, #c89468 100%);
+            top: 0; left: 0; right: 0;
+            width: 100%; height: 50%;
+            background: linear-gradient(135deg, #8D2904 0%, #6b1f03 100%);
             clip-path: polygon(0 0, 100% 0, 100% 60%, 50% 100%, 0 60%);
             transition: all 0.4s ease;
             z-index: 1;
             border-radius: 8px 8px 0 0;
         }
+        .envelope:hover::before { height: 0; }
 
-        .envelope:hover::before {
-            height: 0;
-        }
-
-        .envelope-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .envelope-icon {
-            font-size: 60px;
-            margin-bottom: 20px;
-            transition: transform 0.4s ease;
-            display: inline-block;
-        }
-
-        .envelope:hover .envelope-icon {
-            transform: scale(1.15);
-        }
-
-        .envelope-text {
-            color: #8D2904;
-            font-size: 18px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            font-family: 'Cinzel', serif;
-        }
-
-        .envelope-subtitle {
-            color: #555;
-            font-size: 13px;
-            font-weight: 400;
-            letter-spacing: 1px;
-        }
-
-        .envelope:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
-        }
+        .envelope-content { position: relative; z-index: 2; }
+        .envelope-icon { font-size: 60px; margin-bottom: 20px; transition: transform 0.4s ease; display: inline-block; }
+        .envelope:hover .envelope-icon { transform: scale(1.15); }
+        
+        .envelope-text { color: #f5e6d3; font-size: 26px; font-weight: 400; letter-spacing: 1px; margin-bottom: 15px; }
+        .envelope-subtitle { color: #d4a574; font-size: 18px; font-weight: 400; letter-spacing: 0.5px; }
+        .envelope:hover { transform: translateY(-8px); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 50px rgba(139, 0, 0, 0.4); }
 
         /* INVITACIÓN */
-        .invitation-wrapper {
-            display: none;
-            width: 100%;
-            min-height: 100vh;
-            padding: 40px 20px;
-            animation: fadeIn 0.6s ease;
-        }
+       .invitation-wrapper {
+    display: none;
+    width: 100%;
+    min-height: 100vh;
+    padding: 40px 20px;
+    animation: fadeIn 0.6s ease;
+    
+    /* Fondo base oscuro */
+    background-color: #0d0d0d;
+    
+    /* NUEVO: Fondo floral corregido (sin errores SVG) */
+    background-image: 
+        /* Degradado sutil en las esquinas para dar profundidad */
+        radial-gradient(circle at 0% 0%, rgba(141, 41, 4, 0.25) 0%, transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(141, 41, 4, 0.25) 0%, transparent 60%),
+        /* Patrón de pétalos generado por CSS (seguro y elegante) */
+        radial-gradient(circle at 50% 50%, rgba(141, 41, 4, 0.10) 0%, transparent 70%);
+    
+    /* Tamaño y repetición del patrón */
+    background-size: 100% 100%, 100% 100%, 150px 150px;
+    background-repeat: no-repeat, no-repeat, repeat;
+    background-position: 0% 0%, 100% 100%, center;
+}
+        .invitation-wrapper.active { display: block; }
 
-        .invitation-wrapper.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .invitation-container {
             width: 100%;
@@ -140,47 +148,31 @@
         }
 
         @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9) translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
+            from { opacity: 0; transform: scale(0.9) translateY(30px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         .invitation {
-            background:
-linear-gradient(rgba(255,255,255,.82),rgba(255,255,255,.82)),
-url('assets/quinceañera1.jpg') center/cover no-repeat;
+            background: linear-gradient(135deg, rgba(20, 10, 10, 0.95) 0%, rgba(10, 5, 5, 0.98) 100%),
+                        url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjMjIyIi8+CjxwYXRoIGQ9Ik0wIDBoNHY0SDB6IiBmaWxsPSIjMzMzIiBmaWxsLW9wYWNpdHk9IjAuNSIvPjwvc3ZnPg==');
+            background-color: #1a1a1a;
             border: 6px solid #d4a574;
             border-radius: 30px;
             padding: 50px 35px;
             position: relative;
-            box-shadow: 0 25px 70px rgba(212, 165, 116, 0.35);
+            box-shadow: 0 25px 70px rgba(139, 0, 0, 0.4), inset 0 0 30px rgba(0, 0, 0, 0.5);
             overflow: visible;
         }
 
-        .invitation::before,
-        .invitation::after {
-            content: '';
+        .invitation::before, .invitation::after {
+            content: '✦';
             position: absolute;
-            width: 100px;
-            height: 100px;
-            opacity: 0.1;
-            pointer-events: none;
+            font-size: 24px;
+            color: #d4a574;
+            opacity: 0.6;
         }
-
-        .invitation::before {
-            top: -20px;
-            right: -20px;
-        }
-
-        .invitation::after {
-            bottom: -20px;
-            left: -20px;
-        }
+        .invitation::before { top: 20px; right: 30px; }
+        .invitation::after { bottom: 20px; left: 30px; }
 
         .invitation-content {
             position: relative;
@@ -188,274 +180,220 @@ url('assets/quinceañera1.jpg') center/cover no-repeat;
             text-align: center;
         }
 
-        .joy-opening {
-            font-family: 'Cinzel', serif;
-            color: #8D2904;
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 30px;
-            font-style: italic;
+        /* DECORACIONES */
+        .crown-icon {
+            font-size: 55px; margin-bottom: 15px; display: inline-block;
+            animation: shimmer 2s ease-in-out infinite; cursor: pointer; transition: all 0.3s ease;
+        }
+        .crown-icon:hover { animation: shimmer 1s ease-in-out infinite; transform: scale(1.2) rotate(10deg); }
+
+        .butterfly-decorative {
+            cursor: pointer; transition: all 0.3s ease; display: inline-block;
+        }
+        .butterfly-decorative:hover { animation: shimmer 1.5s ease-in-out infinite; transform: scale(1.15); }
+
+        /* ROSAS EN ESQUINAS */
+        .rose-corner-top-left {
+            position: absolute; top: -20px; left: -20px; width: 120px; height: 120px;
+            background: url('assets/rosas-esquina.png') no-repeat center/contain;
+            opacity: 0.9; z-index: 10; pointer-events: none;
+        }
+        .rose-corner-bottom-right {
+            position: absolute; bottom: -20px; right: -20px; width: 120px; height: 120px;
+            background: url('assets/rosas-esquina.png') no-repeat center/contain;
+            opacity: 0.9; z-index: 10; pointer-events: none; transform: rotate(180deg);
         }
 
-        .parents-block {
-            margin-bottom: 30px;
-        }
-
+        /* TIPOGRAFÍA Y COLORES (Great Vibes para títulos y textos largos) */
+        .parents-block { margin-bottom: 25px; }
         .parents-names {
-            font-family: 'EB Garamond', serif;
-            color: #323E48;
-            font-size: 24px;
-            line-height: 2;
-            font-weight: 600;
-            letter-spacing: 0.3px;
+            color: #f5e6d3; font-size: 30px; line-height: 1.6; font-weight: 400; letter-spacing: 0.5px;
         }
-
-        .parents-divider {
-            font-family: 'Cinzel', serif;
-            color: #8D2904;
-            font-weight: 400;
-            font-size: 16px;
-            margin: 10px 0;
-        }
-
-        .invitation-text {
-            font-family: 'EB Garamond', serif;
-            color: #323E48;
-            font-size: 18px;
-            line-height: 1.9;
-            margin: 25px 0;
-            font-weight: 400;
-            letter-spacing: 0.2px;
-        }
-
-        .daughter-highlight {
-            font-family: 'Cinzel', serif;
-            color: #8D2904;
-            font-size: 32px;
-            font-weight: 700;
-            margin: 25px 0;
-            letter-spacing: 0.5px;
-        }
-
-        .special-moment {
-            font-family: 'EB Garamond', serif;
-            color: #323E48;
-            font-size: 15px;
-            line-height: 1.9;
-            margin: 25px 0;
-            font-weight: 400;
-            font-style: italic;
-            letter-spacing: 0.2px;
-        }
-
-        .privilege-text {
-            font-family: 'EB Garamond', serif;
-            color: #323E48;
-            font-size: 15px;
-            line-height: 1.9;
-            margin: 25px 0;
-            font-weight: 400;
-            letter-spacing: 0.2px;
-        }
-
-        .illustration-container{
-width:100%;
-margin:40px 0;
-display:flex;
-justify-content:center;
-align-items:center;
-background:none;
-border:none;
-}
-
-        .illustration-container img{
-width:270px;
-max-width:90%;
-height:auto;
-object-fit:contain;
-padding:12px;
-border:3px solid #d4a574;
-border-radius:28px;
-background:rgba(255,255,255,.70);
-box-shadow:0 10px 30px rgba(212,165,116,.25),0 0 0 8px rgba(255,255,255,.55);
-}
-
-        .event-details {
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 18px;
-            padding: 30px;
-            margin: 35px 0;
-            border: 2px solid #f0d7d0;
-        }
-
-        .event-item {
-            margin-bottom: 20px;
-        }
-
-        .event-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .event-label {
-            font-family: 'Cinzel', serif;
-            color: #8D2904;
-            font-size: 11px;
-            letter-spacing: 2px;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-
-        .event-value {
-            font-family: 'EB Garamond', serif;
-            color: #323E48;
-            font-size: 18px;
-            font-weight: 500;
-            letter-spacing: 0.2px;
-        }
-
         .divider-line {
-            width: 80px;
-            height: 2px;
-            background: #d4a574;
-            margin: 20px auto;
+            width: 80px; height: 2px; background: #d4a574; margin: 20px auto;
         }
 
-        .gratitude-text {
-            font-family: 'EB Garamond', serif;
-            color: #323E48;
-            font-size: 15px;
-            line-height: 1.9;
-            margin: 30px 0;
-            font-weight: 400;
-            font-style: italic;
-            letter-spacing: 0.2px;
+        .my-fifteen {
+            color: #f5e6d3; font-size: 52px; font-weight: 400;
+            margin-bottom: 8px; letter-spacing: 0.5px;
+        }
+        .my-fifteen:hover { animation: shimmer 1.5s ease-in-out infinite; }
+
+        .daughter-name {
+            color: #d4a574; font-size: 46px; font-weight: 400;
+            margin-bottom: 30px; letter-spacing: 0.5px;
+            cursor: pointer; transition: all 0.3s ease;
+        }
+        .daughter-name:hover {
+            animation: shimmer 1.5s ease-in-out infinite;
+            text-shadow: 0 0 20px rgba(212, 165, 116, 0.8); transform: scale(1.05);
         }
 
-        .action-buttons {
-            display: flex;
-            gap: 12px;
-            margin-top: 40px;
-            flex-direction: column;
+        /* GALERÍA DE FOTOS */
+        .gallery-container {
+            display: flex; flex-direction: column; gap: 15px; margin: 30px 0;
         }
-
-        .btn {
-            padding: 14px 20px;
-            border: none;
-            border-radius: 25px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
+		
+        .photo-card-medium {
+            width: 70%;
+            max-width: 320px;
+            margin: 0 auto;
+            border-radius: 20px; overflow: hidden;
+            border: 4px solid #d4a574;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
             transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-family: 'Barlow', sans-serif;
+            background: #1a1a1a;
+        }
+        .photo-card-medium:hover { transform: scale(1.02); border-color: #fff; }
+        .photo-card-medium img { width: 100%; height: auto; display: block; }	
+		
+        .photo-card-large {
+            width: 100%; border-radius: 20px; overflow: hidden;
+            border: 4px solid #d4a574;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            transition: all 0.3s ease;
+            background: #1a1a1a;
+        }
+        .photo-card-large:hover { transform: scale(1.02); border-color: #fff; }
+        .photo-card-large img { width: 100%; height: auto; display: block; }
+
+        /* TEXTOS GENERALES (Manuscrita) */
+        .celebration-text {
+            color: #f5e6d3; font-size: 18px;
+            line-height: 1.5; margin: 25px 0; font-weight: 200; letter-spacing: 1px;
         }
 
+        .editorial-text {
+            color: #f5e6d3; font-size: 26px; line-height: 1.4; font-weight: 400; letter-spacing: 1px;
+        }
+
+        /* SECCIÓN DE CARDS (BASE Manuscrita) */
+        .section-card {
+            position: relative; max-width: 455px; margin: 28px auto;
+            padding: 26px 22px;
+            border: 1px solid rgba(212, 165, 116, 0.45);
+            border-radius: 18px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(0,0,0,0.25));
+            box-shadow: 0 12px 30px rgba(0,0,0,0.30), inset 0 1px 0 rgba(255,255,255,0.05);
+            backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
+            opacity: 0; transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s cubic-bezier(.2,.75,.25,1), box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .section-card.revealed { opacity: 1; transform: translateY(0); }
+        
+        /* EFECTO HOVER DORADO EN CARDS */
+        .section-card:hover {
+            border-color: #d4a574;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.35), 0 0 30px rgba(212, 165, 116, 0.2);
+            animation: cardGlow 0.4s ease forwards;
+        }
+
+        .section-card::before {
+            content: ''; position: absolute; top: 14px; left: 50%;
+            width: 42px; height: 1px; transform: translateX(-50%);
+            background: #d4a574; opacity: 0.65;
+        }
+        .section-card .event-label { margin-top: 7px; margin-bottom: 13px; font-size: 18px; font-weight: 400; }
+        .section-card p { max-width: 410px; margin-left: auto; margin-right: auto; }
+        .section-card .card-icon { font-size: 26px; margin-bottom: 6px; opacity: 0.9; color: #d4a574; }
+
+        /* ===== CARD ESPECIAL DE FECHA (Manuscrita) ===== */
+        .event-card { padding: 30px 20px; background: linear-gradient(145deg, rgba(141,41,4,0.20), rgba(0,0,0,0.30)); }
+        .event-card .event-date {
+            color: #f5e6d3; font-size: 28px; font-weight: 400; letter-spacing: 1px; line-height: 1.4;
+        }
+        .event-card .event-place {
+            color: #d4a574; font-size: 30px; font-weight: 400; margin-top: 10px;
+        }
+
+        /* ===== CARDS INFORMATIVAS Y BOTONES (Cinzel - Legible) ===== */
+        .info-card {
+            font-family: 'Cinzel', serif;
+        }
+        .info-card .event-label {
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            
+        }
+        .info-card .closing-text {
+            font-family: 'Cinzel', serif;
+            font-size: 15px;
+            line-height: 1.8;
+            font-weight: 200;
+        }
+        .info-card .closing-text strong {
+            font-weight: 700;
+            color: #d4a574;
+        }
+
+        /* BOTONES CON CINZEL */
+        .action-buttons {
+            display: flex; gap: 12px; margin-top: 40px; flex-direction: column;
+            max-width: 430px; margin-left: auto; margin-right: auto;
+        }
+        .btn {
+            padding: 16px 20px; border: none; border-radius: 30px;
+            font-size: 12px; font-weight: 600; cursor: pointer; text-decoration: none;
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', serif; /* Fuente legible */
+        }
         .btn-maps {
-            background: #8D2904;
-            color: white;
+            background: linear-gradient(135deg, #8D2904 0%, #6b1f03 100%);
+            color: #f5e6d3; border: 2px solid #d4a574;
         }
-
         .btn-maps:hover {
-            background: #6b1f03;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(141, 41, 4, 0.3);
+            transform: translateY(-3px); box-shadow: 0 8px 25px rgba(141, 41, 4, 0.6);
         }
-
         .btn-whatsapp {
-            background: #25D366;
-            color: white;
+            background: #25D366; color: white;
         }
-
         .btn-whatsapp:hover {
-            background: #1fa851;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+            background: #1fa851; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
         }
-
         .btn-back {
-            background: #E8E8E8;
-            color: #323E48;
-            font-size: 13px;
-            margin-top: 15px;
+            background: transparent; color: #d4a574;
+            font-size: 15px; border: 2px solid #d4a574; margin-top: 15px;
         }
-
         .btn-back:hover {
-            background: #D0D0D0;
-            transform: translateY(-2px);
+            background: #d4a574; color: #1a1a1a; transform: translateY(-3px);
         }
 
-        .icon {
-            font-size: 18px;
-        }
+        /* Retrasos de Cards */
+        .section-card[data-card-delay="0"] { transition-delay: 0s; }
+        .section-card[data-card-delay="0.12"] { transition-delay: 0.12s; }
+        .section-card[data-card-delay="0.24"] { transition-delay: 0.24s; }
+        .section-card[data-card-delay="0.36"] { transition-delay: 0.36s; }
 
-        /* Responsive */
+        /* RESPONSIVE */
         @media (max-width: 600px) {
-            body {
-                padding: 15px;
-            }
-
-            .invitation {
-                padding: 35px 25px;
-                border-width: 5px;
-            }
-
-            .envelope {
-                padding: 40px 25px;
-            }
-
-            .joy-opening {
-                font-size: 20px;
-            }
-
-            .parents-names {
-                font-size: 14px;
-                line-height: 1.8;
-            }
-
-            .daughter-highlight {
-                font-size: 20px;
-            }
-
-            .invitation-text,
-            .special-moment,
-            .privilege-text,
-            .gratitude-text {
-                font-size: 13px;
-                line-height: 1.7;
-            }
-
-            .event-value {
-                font-size: 15px;
-            }
-
-            .illustration-container{
-width:100%;
-margin:40px 0;
-display:flex;
-justify-content:center;
-align-items:center;
-background:none;
-border:none;
-}
-
-            .invitation-wrapper {
-                padding: 30px 15px;
-            }
+            .invitation { padding: 35px 20px; border-width: 5px; }
+            .envelope { padding: 40px 25px; }
+            .my-fifteen { font-size: 40px; }
+            .daughter-name { font-size: 36px; }
+            .parents-names { font-size: 22px; }
+            .celebration-text, .closing-text { font-size: 20px; }
+            .invitation-wrapper { padding: 30px 10px; }
+			.photo-card-medium { width: 90%; }
+			
+            .rose-corner-top-left, .rose-corner-bottom-right { width: 80px; height: 80px; top: -10px; left: -10px; }
+            .rose-corner-bottom-right { bottom: -10px; right: -10px; }
+            
+            /* Ajuste de textos legibles en móviles */
+            .info-card .event-label { font-size: 14px; }
+            .info-card .closing-text { font-size: 14px; }
+            .btn { font-size: 14px; }
         }
     </style>
 </head>
 <body>
-    <!-- PORTADA - SOBRE DE INVITACIÓN -->
+    <!-- PORTADA - SOBRE -->
     <div class="envelope-container" id="envelopeContainer">
-        <div class="envelope" onclick="openInvitation()">
+        <div class="envelope" role="button" tabindex="0" aria-label="Abrir invitación" onclick="openInvitation()" onkeydown="if(event.key==='Enter'||event.key===' ')openInvitation()">
             <div class="envelope-content">
-                <div class="envelope-icon">✉️</div>
+                <div class="envelope-icon">💌</div>
                 <div class="envelope-text">Tienes una invitación especial</div>
                 <div class="envelope-subtitle">Haz clic para abrir</div>
             </div>
@@ -466,77 +404,134 @@ border:none;
     <div class="invitation-wrapper" id="invitationWrapper">
         <div class="invitation-container">
             <div class="invitation">
+                
+                <!-- DECORACIÓN DE ROSAS EN ESQUINAS -->
+                <div class="rose-corner-top-left"></div>
+                <div class="rose-corner-bottom-right"></div>
+
                 <div class="invitation-content">
                     
-                    <!-- Apertura elegante -->
-                    <div class="joy-opening">Con inmensa alegría</div>
+                    <div class="crown-icon scroll-reveal" data-delay="0.1s">👑</div>
 
-                    <!-- Nombres de padres -->
-                    <div class="parents-block">
-                        <div class="parents-names">
-                            Carlos Daniel Guerrero Conrado
-                        </div>
-                        <div class="parents-divider">y</div>
-                        <div class="parents-names">
-                            Lissette Mónica Zambrano Cercado
-                        </div>
+                    <div class="parents-names scroll-reveal" data-delay="0.2s">
+                        Carlos Daniel Guerrero Conrado
+                    </div>
+                    <div class="parents-names scroll-reveal" data-delay="0.25s">
+                        Lissette Mónica Zambrano Cercado
                     </div>
 
-                    <!-- Párrafo de invitación principal -->
-                    <div class="invitation-text">
-                        Tienen el honor de invitarles a compartir una noche inolvidable con motivo de la celebración de los 15 años de su querida Hija.
+                    <div class="divider-line scroll-reveal" data-delay="0.3s"></div>
+
+                    <div class="celebration-text scroll-reveal" data-delay="0.35s">
+                        Con mucha alegría tenemos el placer de invitarte a celebrar
                     </div>
 
-                    <!-- Nombre de la hija -->
-                    <div class="daughter-highlight">
-                        Dayra Guerrero Zambrano
+                    <div class="my-fifteen scroll-reveal" data-delay="0.45s">Los XV Años</div>
+                    
+                    <div class="celebration-text scroll-reveal" data-delay="0.55s">
+                        de nuestra querida hija
                     </div>
 
-                    <!-- Ilustración -->
-                    <div class="illustration-container">
-                        <img src="assets/quinceañera2.png" alt="Dayra Guerrero Zambrano" onerror="this.style.display='none'">
+                    <div class="daughter-name scroll-reveal" data-delay="0.65s">
+                        Dayra <br> Guerrero Zambrano
                     </div>
 
-                    <!-- Párrafo especial sobre el momento -->
-                    <div class="special-moment">
-                        Con gran ilusión celebramos este momento tan especial, símbolo de nuevos sueños, esperanza y del inicio de una hermosa etapa en su vida.
+                    <div class="butterfly-decorative scroll-reveal" data-delay="0.75s">
+                        <span style="display:inline-block; animation: floatButterfly 4s ease-in-out infinite;">🦋</span>
+                        <span style="display:inline-block; animation: floatButterfly 4s ease-in-out infinite; animation-delay: 0.5s;">🦋</span>
+                        <span style="display:inline-block; animation: floatButterfly 4s ease-in-out infinite; animation-delay: 1s;">🦋</span>
                     </div>
 
-                    <!-- Párrafo sobre la presencia -->
-                    <div class="privilege-text">
-                        Será un verdadero privilegio contar con su distinguida presencia y compartir juntos una velada que permanecerá para siempre en nuestros recuerdos.
-                    </div>
-
-                    <!-- Detalles del evento -->
-                    <div class="event-details">
-                        <div class="event-item">
-                            <div class="event-label">Fecha</div>
-                            <div class="event-value">Sábado, 5 de septiembre</div>
-                        </div>
-                        <div class="event-item">
-                            <div class="event-label">Hora</div>
-                            <div class="event-value">8:00 p. m.</div>
-                        </div>
-                        <div class="event-item">
-                            <div class="event-label">Lugar</div>
-                            <div class="event-value">Esmeraldas y Vacas Galindo</div>
+                    <!-- GALERÍA DE FOTOS -->
+                    <div class="gallery-container scroll-reveal" data-delay="0.85s">
+					   <div class="photo-card-medium">
+						  <img src="assets/perfil-corona.png" alt="Dayra Guerrero Zambrano" onerror="this.src='https://via.placeholder.com/300x400/8b0000/d4a574?text=Foto+Mediana'">
                         </div>
                     </div>
 
-                    <!-- Línea decorativa -->
-                    <div class="divider-line"></div>
-
-                    <!-- Párrafo de gratitud -->
-                    <div class="gratitude-text">
-                        Agradecemos de corazón su compañía en esta ocasión tan significativa para nuestra familia.
+                    <div class="celebration-text editorial-text scroll-reveal" data-delay="0.95s">
+                        Una noche especial para celebrar sus sueños,<br>
+                        sus nuevos comienzos y este hermoso momento de su vida.
                     </div>
 
-                    <!-- Botones de acción -->
+                    <!-- CARDS CON EFECTO DORADO AL HOVER -->
+                    
+                    <!-- CARD DE FECHA (Manuscrita) -->
+                    <div class="section-card event-card scroll-reveal" data-delay="1.15s" data-card-delay="0">
+                        <div class="card-icon">✦</div>
+                        <div class="event-label" style="color: #f5e6d3;">La Celebración</div>
+                        <div class="event-date">5 de Septiembre · 8:00 P. M.</div>
+                        <div class="event-place">D'fraijo Eventos (Esmeraldas y Vacas Galindo)</div>
+                    </div>
+
+                    <div class="closing-text scroll-reveal" data-delay="1.25s">
+                        Nos encantará contar con su presencia<br>
+                        para compartir juntos esta noche tan especial.
+                    </div>
+					
+					<!-- NUEVO: SEGUNDA FOTO (Grande, entre el texto y el código de vestimenta) -->
+                    <div class="gallery-container scroll-reveal" data-delay="1.30s">
+                        <div class="photo-card-large">
+                            <img src="assets/vestido-sentada.png" alt="Dayra bajo el arco" onerror="this.src='https://via.placeholder.com/400x300/8b0000/d4a574?text=Foto+Grande'">
+                        </div>
+                    </div>
+
+                    <!-- CARDS INFORMATIVAS (Cinzel - Legible) -->
+																					
+													  
+																																											   
+							  
+						  
+
+											   
+                    <div class="section-card info-card scroll-reveal" data-delay="1.35s" data-card-delay="0.12">
+                        <div class="card-icon">✦</div>
+                        <div class="event-label" style="color: #f5e6d3;">Código de Vestimenta</div>
+                        <div class="closing-text" style="margin-top:8px; color: #f5e6d3;">
+                            <strong>Vestimenta formal</strong><br>
+                            <span style="font-size:0.9em; opacity:0.9;">No rojo</span>
+                        </div>
+                    </div>
+
+                    <div class="section-card info-card scroll-reveal" data-delay="1.65s" data-card-delay="0.24">
+                        <div class="card-icon">♡</div>
+                        <div class="event-label" style="color: #f5e6d3;">Un Detalle Especial</div>
+                        <div class="closing-text" style="margin-top:8px; color: #f5e6d3;">
+                            Su presencia es nuestro mejor regalo.<br>
+                            Recibiremos con gratitud su detalle en la <strong>lluvia de sobres.</strong>
+																							 
+                        </div>
+                    </div>
+
+                    <div class="section-card info-card scroll-reveal" data-delay="1.95s" data-card-delay="0.36">
+                        <div class="card-icon">✓</div>
+                        <div class="event-label" style="color: #f5e6d3;">Confirmar Asistencia</div>
+                        <div class="closing-text" style="margin-top:8px; color: #f5e6d3;">
+                            Agradecemos confirmar su asistencia<br>
+                            antes del 1 de septiembre.
+                        </div>
+                    </div>
+
+                    <div class="closing-text editorial-text scroll-reveal" data-delay="2.25s">
+                        Será un honor contar con su presencia<br>
+                        en esta noche tan especial.
+                    </div>
+
+                    <div class="divider-line scroll-reveal" data-delay="2.35s"></div>
+
+                    <!-- BOTONES (Cinzel - Legible) -->
+																							
+															  
+															 
+							  
+						  
+
+									
                     <div class="action-buttons">
-                        <a href="https://maps.app.goo.gl/zDQQNUM27RSpZbW57" target="_blank" class="btn btn-maps">
+                        <a href="https://maps.app.goo.gl/QsKuEgtxf2FwLrec9" target="_blank" class="btn btn-maps">
                             <span class="icon">📍</span> Ver ubicación en Google Maps
                         </a>
-                        <a href="https://wa.me/593970190446?text=Hola,%20confirmo%20mi%20asistencia%20a%20los%20XV%20años%20de%20Dayra%20Guerrero%20Zambrano." target="_blank" class="btn btn-whatsapp">
+                        <a href="https://wa.me/593980290446?text=Hola,%20confirmo%20mi%20asistencia%20a%20los%20XV%20años%20de%20Dayra." target="_blank" class="btn btn-whatsapp">
                             <span class="icon">💬</span> Confirmar Asistencia por WhatsApp
                         </a>
                         <!--<button onclick="closeInvitation()" class="btn btn-back">
@@ -549,29 +544,79 @@ border:none;
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
     <script>
+        function createConfetti() {
+            const canvas = document.createElement('canvas');
+            canvas.id = 'confetti-canvas';
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            canvas.style.position = 'fixed';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '9999';
+            document.body.appendChild(canvas);
+
+            const confetti = new ConfettiGenerator({
+                target: 'confetti-canvas',
+                max: 80, size: 1.2, animate: true,
+                props: ['circle', 'square'],
+                colors: [[212, 165, 116], [139, 41, 4], [245, 245, 245], [212, 41, 4]],
+                clock: 25, rotate: true,
+                width: window.innerWidth, height: window.innerHeight
+            });
+            confetti.render();
+            setTimeout(() => {
+                confetti.clear();
+                const canvas = document.getElementById('confetti-canvas');
+                if (canvas) canvas.remove();
+            }, 4000);
+        }
+
         function openInvitation() {
             const envelope = document.getElementById('envelopeContainer');
             const invitation = document.getElementById('invitationWrapper');
             
             envelope.style.display = 'none';
             invitation.classList.add('active');
+            createConfetti();
             
-            // Scroll al inicio de la invitación
+            setTimeout(() => {
+                document.querySelectorAll('.scroll-reveal').forEach(el => el.classList.add('revealed'));
+            }, 300);
             window.scrollTo(0, 0);
         }
 
         function closeInvitation() {
             const envelope = document.getElementById('envelopeContainer');
             const invitation = document.getElementById('invitationWrapper');
-            
             invitation.classList.remove('active');
             setTimeout(() => {
                 envelope.style.display = 'flex';
-                invitation.style.display = 'none';
+                invitation.style.display = '';
                 window.scrollTo(0, 0);
             }, 300);
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !entry.target.classList.contains('revealed')) {
+                            entry.target.classList.add('revealed');
+                        }
+                    });
+                }, { threshold: 0.05, rootMargin: '0px 0px -100px 0px' });
+
+                document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+            }, 100);
+        });
+
+        window.addEventListener('resize', function() {
+            const canvas = document.getElementById('confetti-canvas');
+            if (canvas) { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        });
     </script>
 </body>
 </html>
